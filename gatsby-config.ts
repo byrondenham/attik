@@ -13,13 +13,22 @@ const config: GatsbyConfig = {
 	plugins: [
 		{
 			resolve: `gatsby-source-filesystem`,
-			options: { name: `content`, path: `${__dirname}/content/` },
+			options: {
+				name: `content`,
+				path: `${__dirname}/content`,
+			},
 		},
 		{
 			resolve: `gatsby-transformer-remark`,
 			options: {
-				resolve: `gatsby-remark-katex`,
-				options: { strict: `ignore` },
+				plugins: [
+					{
+						resolve: `gatsby-remark-katex`,
+						options: {
+							strict: `ignore`,
+						},
+					},
+				],
 			},
 		},
 		"gatsby-plugin-postcss",
